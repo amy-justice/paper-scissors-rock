@@ -9,13 +9,20 @@ function getComputerChoice(options) {
 }
 
 function getPlayerChoice() {
-    let playerChoice = prompt("Choose Paper, Scissors, or Rock: ");
-    return playerChoice.toLowerCase();
+    // let playerChoice = prompt("Choose Paper, Scissors, or Rock: ");
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            console.log(button.id);
+            let playerChoice = button.id;
+            playRound(options, playerChoice.toLowerCase())
+        })
+    })
 }
 
-function playRound(options) {
+function playRound(options, playerChoice) {
     let computerChoice = getComputerChoice(options);
-    let playerChoice = getPlayerChoice();
+    // let playerChoice = getPlayerChoice();
     if (playerChoice == computerChoice) {
         console.log("It's a draw!")
     } else if (playerChoice == "rock" && computerChoice == "scissors") {
@@ -42,22 +49,26 @@ function playRound(options) {
     return playerScore, computerScore;
 }
 
-function game(options) {
-    for (i = 0; i < 5; i++) {
-        playRound(options);
-        if (playerScore == 3) {
-            console.log("You won best of 5! Great job!")
-            break;
-        } else if (computerScore == 3) {
-            console.log("Aww you lose...")
-            break;
-        }
-    }
-    if (playerScore > computerScore) {
-        console.log("You won! Nice one.")
-    } else if (computerScore > playerScore) {
-        console.log("You lose, unlucky!")
-    }
-}
+// function game(options) {
+//     for (i = 0; i < 5; i++) {
+//         playRound(options);
+//         if (playerScore == 3) {
+//             console.log("You won best of 5! Great job!")
+//             break;
+//         } else if (computerScore == 3) {
+//             console.log("Aww you lose...")
+//             break;
+//         }
+//     }
+//     if (playerScore > computerScore) {
+//         console.log("You won! Nice one.")
+//     } else if (computerScore > playerScore) {
+//         console.log("You lose, unlucky!")
+//     }
+// }
 
-game(options);
+// game(options);
+
+// playRound(options)
+
+getPlayerChoice();

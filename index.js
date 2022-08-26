@@ -43,15 +43,20 @@ function playRound(options) {
 }
 
 function game(options) {
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 5; i++) {
         playRound(options);
-        if (playerScore == 5) {
+        if (playerScore == 3) {
             console.log("You won best of 5! Great job!")
             break;
-        } else if (computerScore == 5) {
+        } else if (computerScore == 3) {
             console.log("Aww you lose...")
             break;
         }
+    }
+    if (playerScore > computerScore) {
+        console.log("You won! Nice one.")
+    } else if (computerScore > playerScore) {
+        console.log("You lose, unlucky!")
     }
 }
 

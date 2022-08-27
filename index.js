@@ -39,46 +39,48 @@ function getComputerChoice(options) {
 }
 
 function startGame(playerChoice) {
-    playRound(options, playerChoice)
-    if (computerScore == 5 || playerScore == 5) {
-        if (playerScore == 5) {
-            scoreboardText.innerHTML = "You won best of 5!"
-            newGameBtn.style.visibility = 'visible'
-        } else {
-            scoreboardText.innerText = "You lose, unlucky!"
-            newGameBtn.style.visibility = 'visible'
+    if (playerScore < 5 && computerScore < 5) {
+        playRound(options, playerChoice)
+        if (computerScore == 5 || playerScore == 5) {
+            if (playerScore == 5) {
+                scoreboardText.innerHTML = "You won!"
+                newGameBtn.style.visibility = 'visible'
+            } else {
+                scoreboardText.innerText = "You lose, unlucky!"
+                newGameBtn.style.visibility = 'visible'
+            }
         }
     }
 }
 
 function playRound(options, playerChoice) {
     let computerChoice = getComputerChoice(options);
-    if (playerChoice == computerChoice) {
-        scoreboardText.innerHTML = "It's a draw!"
-    } else if (playerChoice == "fire" && computerChoice == "grass") {
-        playerScore += 1;
-        playerScoreText.innerHTML = playerScore;
-        scoreboardText.innerHTML = "Fire beats Grass <br> You win!"
-    } else if (playerChoice == "water" && computerChoice == "fire") {
-        playerScore += 1;
-        playerScoreText.innerHTML = playerScore;
-        scoreboardText.innerHTML = "Water beats Fire <br> You win!"
-    } else if (playerChoice == "grass" && computerChoice == "water") {
-        playerScore += 1;
-        playerScoreText.innerHTML = playerScore;
-        scoreboardText.innerHTML = "Grass beats Water <br> You win!"
-    } else if (playerChoice == "fire" && computerChoice == "water") {
-        computerScore += 1;
-        computerScoreText.innerHTML = computerScore;
-        scoreboardText.innerHTML = "Water beats Fire <br> You lose!"
-    } else if (playerChoice == "water" && computerChoice == "grass") {
-        computerScore += 1;
-        computerScoreText.innerHTML = computerScore;
-        scoreboardText.innerHTML = "Grass beats Water <br> You lose!"
-    } else if (playerChoice == "grass" && computerChoice == "fire") {
-        computerScore += 1;
-        computerScoreText.innerHTML = computerScore;
-        scoreboardText.innerHTML = "Fire beats Grass <br> You lose!"
-    }
+        if (playerChoice == computerChoice) {
+            scoreboardText.innerHTML = "It's a draw!"
+        } else if (playerChoice == "fire" && computerChoice == "grass") {
+            playerScore += 1;
+            playerScoreText.innerHTML = playerScore;
+            scoreboardText.innerHTML = "Fire beats Grass <br> You win!"
+        } else if (playerChoice == "water" && computerChoice == "fire") {
+            playerScore += 1;
+            playerScoreText.innerHTML = playerScore;
+            scoreboardText.innerHTML = "Water beats Fire <br> You win!"
+        } else if (playerChoice == "grass" && computerChoice == "water") {
+            playerScore += 1;
+            playerScoreText.innerHTML = playerScore;
+            scoreboardText.innerHTML = "Grass beats Water <br> You win!"
+        } else if (playerChoice == "fire" && computerChoice == "water") {
+            computerScore += 1;
+            computerScoreText.innerHTML = computerScore;
+            scoreboardText.innerHTML = "Water beats Fire <br> You lose!"
+        } else if (playerChoice == "water" && computerChoice == "grass") {
+            computerScore += 1;
+            computerScoreText.innerHTML = computerScore;
+            scoreboardText.innerHTML = "Grass beats Water <br> You lose!"
+        } else if (playerChoice == "grass" && computerChoice == "fire") {
+            computerScore += 1;
+            computerScoreText.innerHTML = computerScore;
+            scoreboardText.innerHTML = "Fire beats Grass <br> You lose!"
+        }
     return playerScore, computerScore;
 }

@@ -16,7 +16,7 @@ function newGame() {
     computerScore = 0;
     playerScoreText.innerHTML = playerScore;
     computerScoreText.innerHTML = computerScore;
-    scoreboardText.innerHTML = "Best of 5 <br> Click element to start";
+    scoreboardText.innerHTML = "First to 5 points <br> Click element to start";
     newGameBtn.style.visibility = 'hidden';
 }
 
@@ -40,8 +40,8 @@ function getComputerChoice(options) {
 
 function startGame(playerChoice) {
     playRound(options, playerChoice)
-    if (computerScore + playerScore == 5) {
-        if (playerScore > computerScore) {
+    if (computerScore == 5 || playerScore == 5) {
+        if (playerScore == 5) {
             scoreboardText.innerHTML = "You won best of 5!"
             newGameBtn.style.visibility = 'visible'
         } else {

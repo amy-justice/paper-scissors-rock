@@ -2,6 +2,11 @@ var options = ["Fire", "Water", "Grass"];
 let playerScore = 0;
 let computerScore = 0;
 
+// getting DOM elements
+const scoreboardText = document.getElementById('scoreboard-text');
+const playerScoreText = document.getElementById('player-score');
+const computerScoreText = document.getElementById('computer-score');
+
 function getComputerChoice(options) {
     let computerChoice = Math.floor(Math.random()*options.length);
     console.log(options[computerChoice]);
@@ -22,27 +27,32 @@ function getPlayerChoice() {
 
 function playRound(options, playerChoice) {
     let computerChoice = getComputerChoice(options);
-    // let playerChoice = getPlayerChoice();
     if (playerChoice == computerChoice) {
-        console.log("It's a draw!")
+        scoreboardText.innerHTML = "It's a draw!"
     } else if (playerChoice == "fire" && computerChoice == "grass") {
         playerScore += 1;
-        console.log("Fire beats Grass! You win!")
+        playerScoreText.innerHTML = playerScore;
+        scoreboardText.innerHTML = "Fire beats Grass <br> You win!"
     } else if (playerChoice == "water" && computerChoice == "fire") {
         playerScore += 1;
-        console.log("Water beats Grass! You win!")
+        playerScoreText.innerHTML = playerScore;
+        scoreboardText.innerHTML = "Water beats Grass <br> You win!"
     } else if (playerChoice == "grass" && computerChoice == "water") {
         playerScore += 1;
-        console.log("Grass beats Water! You win!")
+        playerScoreText.innerHTML = playerScore;
+        scoreboardText.innerHTML = "Grass beats Water <br> You win!"
     } else if (playerChoice == "fire" && computerChoice == "water") {
         computerScore += 1;
-        console.log("Water beats Fire! You lose!")
+        computerScoreText.innerHTML = computerScore;
+        scoreboardText.innerHTML = "Water beats Fire <br> You lose!"
     } else if (playerChoice == "water" && computerChoice == "grass") {
         computerScore += 1;
-        console.log("Grass beats Water! You lose!")
+        computerScoreText.innerHTML = computerScore;
+        scoreboardText.innerHTML = "Grass beats Water <br> You lose!"
     } else if (playerChoice == "grass" && computerChoice == "fire") {
         computerScore += 1;
-        console.log("Grass beats Fire! You lose!")
+        computerScoreText.innerHTML = computerScore;
+        scoreboardText.innerHTML = "Grass beats Fire <br> You lose!"
     } else {
         console.log("Did you enter the right thing? Try again!")
     }

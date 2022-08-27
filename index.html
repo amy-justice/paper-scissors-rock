@@ -5,11 +5,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paper Scissors Rock</title>
+
+    <link rel="stylesheet" href="styles.css" />
     <script src="index.js" defer></script>
 </head>
 <body>
-    <button id="fire">Fire</button>
-    <button id="water">Water</button>
-    <button id="grass">Grass</button>
+    <h1>Fire Water Grass</h1>
+
+    <div class="play-btn-container">
+        <div class="btn-top-row">
+            <button class="play-btn" id="fire">
+                <div class="play-btn-color fire">
+                    <img src="/images/fire.png" width="120px">
+                </div>
+            </button>
+        </div>
+
+        <div class="btn-bottom-row">
+            <button class="play-btn" id="water">
+                <div class="play-btn-color water">
+                    <img src="/images/water.png" width="120px">
+                </div>
+            </button>
+        
+            <button class="play-btn" id="grass">
+                <div class="play-btn-color grass">
+                    <img src="/images/grass.png" width="120px">
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <div class="scoreboard-container">
+        <div class="scoreboard-names">
+            <div class="player-name">
+                You
+            </div>
+            <div class="player-name">
+                Foe
+            </div>
+        </div>
+
+        <div class="scoreboard">
+            <div class="play-btn">
+                <div class="play-btn-color">
+                    <div class="scoreboard-score" id="player-score">
+                        0
+                    </div>
+                </div>
+            </div>
+    
+            <div class="scoreboard-box">
+                <div id="scoreboard-text">
+                    Best of 5 <br >
+                    Click element to start
+                </div>
+            </div>
+    
+            <div class="play-btn">
+                <div class="play-btn-color">
+                    <div class="scoreboard-score" id="computer-score">
+                        0
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="footer">
+        Made by <a href="https://github.com/amy-justice">Amy</a> 🌸
+    </div>
+
 </body>
 </html>

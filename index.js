@@ -1,28 +1,54 @@
 var options = ["Fire", "Water", "Grass"];
 let playerScore = 0;
 let computerScore = 0;
+let playerChoice = 0;
 
 // getting DOM elements
 const scoreboardText = document.getElementById('scoreboard-text');
 const playerScoreText = document.getElementById('player-score');
 const computerScoreText = document.getElementById('computer-score');
+const newGameBtn = document.getElementById('restart');
+const buttons = document.querySelectorAll('button');
+
+
+function newGame() {
+    playerScore = 0;
+    computerScore = 0;
+    playerScoreText.innerHTML = playerScore;
+    computerScoreText.innerHTML = computerScore;
+    scoreboardText.innerHTML = "Best of 5 <br> Click element to start";
+    newGameBtn.style.visibility = 'hidden';
+}
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        playerChoice = button.id;
+        console.log("player " + playerChoice)
+        startGame(playerChoice);
+    })
+})
+
+newGameBtn.addEventListener('click', () => {
+    newGame();
+})
 
 function getComputerChoice(options) {
     let computerChoice = Math.floor(Math.random()*options.length);
-    console.log(options[computerChoice]);
+    console.log("computer " + options[computerChoice])
     return options[computerChoice].toLowerCase();
 }
 
-function getPlayerChoice() {
-    // let playerChoice = prompt("Choose Paper, Scissors, or Rock: ");
-    const buttons = document.querySelectorAll('button');
-    buttons.forEach((button) => {
-        button.addEventListener('click', () => {
-            console.log(button.id);
-            let playerChoice = button.id;
-            playRound(options, playerChoice.toLowerCase())
-        })
-    })
+function startGame(playerChoice) {
+    playRound(options, playerChoice)
+    if (computerScore + playerScore == 5) {
+        if (playerScore > computerScore) {
+            scoreboardText.innerHTML = "You won best of 5!"
+            newGameBtn.style.visibility = 'visible'
+        } else {
+            scoreboardText.innerText = "You lose, unlucky!"
+            newGameBtn.style.visibility = 'visible'
+        }
+    }
 }
 
 function playRound(options, playerChoice) {
@@ -36,7 +62,7 @@ function playRound(options, playerChoice) {
     } else if (playerChoice == "water" && computerChoice == "fire") {
         playerScore += 1;
         playerScoreText.innerHTML = playerScore;
-        scoreboardText.innerHTML = "Water beats Grass <br> You win!"
+        scoreboardText.innerHTML = "Water beats Fire <br> You win!"
     } else if (playerChoice == "grass" && computerChoice == "water") {
         playerScore += 1;
         playerScoreText.innerHTML = playerScore;
@@ -52,33 +78,7 @@ function playRound(options, playerChoice) {
     } else if (playerChoice == "grass" && computerChoice == "fire") {
         computerScore += 1;
         computerScoreText.innerHTML = computerScore;
-        scoreboardText.innerHTML = "Grass beats Fire <br> You lose!"
-    } else {
-        console.log("Did you enter the right thing? Try again!")
+        scoreboardText.innerHTML = "Fire beats Grass <br> You lose!"
     }
     return playerScore, computerScore;
 }
-
-// function game(options) {
-//     for (i = 0; i < 5; i++) {
-//         playRound(options);
-//         if (playerScore == 3) {
-//             console.log("You won best of 5! Great job!")
-//             break;
-//         } else if (computerScore == 3) {
-//             console.log("Aww you lose...")
-//             break;
-//         }
-//     }
-//     if (playerScore > computerScore) {
-//         console.log("You won! Nice one.")
-//     } else if (computerScore > playerScore) {
-//         console.log("You lose, unlucky!")
-//     }
-// }
-
-// game(options);
-
-// playRound(options)
-
-getPlayerChoice();

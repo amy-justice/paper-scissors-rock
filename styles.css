@@ -120,6 +120,21 @@ button:hover {
     line-height: 25px;
 }
 
+#restart {
+    font-family: 'Kalam', sans-serif;
+    background-color: rgba(173, 178, 233, 0);
+    font-size: 20px;
+    border: 1px solid #000;
+    margin-top: -25px;
+    border-radius: 10px;
+    padding: 5px 8px;
+    visibility: hidden;
+}
+
+#restart:hover {
+    cursor: pointer;
+}
+
 .scoreboard-score {
     font-size: 60px;
     font-family: 'Kalam', sans-serif;

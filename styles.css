@@ -9,6 +9,8 @@ body {
     justify-content: space-around;
     align-items: center;
     width: 100vw;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 h1 {

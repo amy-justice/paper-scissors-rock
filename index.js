@@ -1,4 +1,4 @@
-var options = ["Paper", "Scissors", "Rock"];
+var options = ["Fire", "Water", "Grass"];
 let playerScore = 0;
 let computerScore = 0;
 
@@ -25,24 +25,24 @@ function playRound(options, playerChoice) {
     // let playerChoice = getPlayerChoice();
     if (playerChoice == computerChoice) {
         console.log("It's a draw!")
-    } else if (playerChoice == "rock" && computerChoice == "scissors") {
+    } else if (playerChoice == "fire" && computerChoice == "grass") {
         playerScore += 1;
-        console.log("Rock beats Scissors! You win!")
-    } else if (playerChoice == "scissors" && computerChoice == "paper") {
+        console.log("Fire beats Grass! You win!")
+    } else if (playerChoice == "water" && computerChoice == "fire") {
         playerScore += 1;
-        console.log("Scissors beats Paper! You win!")
-    } else if (playerChoice == "paper" && computerChoice == "rock") {
+        console.log("Water beats Grass! You win!")
+    } else if (playerChoice == "grass" && computerChoice == "water") {
         playerScore += 1;
-        console.log("Paper beats Rock! You win!")
-    } else if (playerChoice == "paper" && computerChoice == "scissors") {
+        console.log("Grass beats Water! You win!")
+    } else if (playerChoice == "fire" && computerChoice == "water") {
         computerScore += 1;
-        console.log("Scissors beats Paper! You lose!")
-    } else if (playerChoice == "rock" && computerChoice == "paper") {
+        console.log("Water beats Fire! You lose!")
+    } else if (playerChoice == "water" && computerChoice == "grass") {
         computerScore += 1;
-        console.log("Paper beats Rock! You lose!")
-    } else if (playerChoice == "scissors" && computerChoice == "rock") {
+        console.log("Grass beats Water! You lose!")
+    } else if (playerChoice == "grass" && computerChoice == "fire") {
         computerScore += 1;
-        console.log("Rock beats Scissors! You lose!")
+        console.log("Grass beats Fire! You lose!")
     } else {
         console.log("Did you enter the right thing? Try again!")
     }
